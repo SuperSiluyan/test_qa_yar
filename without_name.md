@@ -1,0 +1,488 @@
+---
+cases:
+  - C1278889, 12341241
+
+team:  stream video
+
+tags:
+  - video
+  - PaidModel
+
+---
+
+# description
+1. Всякие ошибочки
+2. ывпывиш2и2гисшг2"№%№%?№%:*%?:*%;!"№%"№%;:(?:%?:%
+дыалтфыдвта
+
+ыватыдвлта
+
+
+
+)))))
+----
+
+```charles
+<?xml version='1.0' encoding='UTF-8' ?>
+<?charles serialisation-version='2.0' ?>
+<rewriteSet-array>
+  <rewriteSet>
+    <active>true</active>
+    <name>ErrorCode | Payture + PciDuck </name>
+    <hosts>
+      <locationPatterns>
+        <locationMatch>
+          <location>
+            <query>▼ Payture ▼</query>
+          </location>
+          <enabled>false</enabled>
+        </locationMatch>
+        <locationMatch>
+          <location>
+            <host>sandbox3.payture.com</host>
+            <path>/vwapi/PaySubmit</path>
+          </location>
+          <enabled>true</enabled>
+        </locationMatch>
+        <locationMatch>
+          <location>
+            <query>▼ PciDuck ▼</query>
+          </location>
+          <enabled>false</enabled>
+        </locationMatch>
+        <locationMatch>
+          <location>
+            <host>*.ivi.ru</host>
+            <path>/payments/process</path>
+          </location>
+          <enabled>true</enabled>
+        </locationMatch>
+        <locationMatch>
+          <location>
+            <host>*ivi.ru</host>
+            <path>/mobileapi/billing/v1/purchase/downsale</path>
+          </location>
+          <enabled>false</enabled>
+        </locationMatch>
+        <locationMatch>
+          <location>
+            <query>▼ Привязанные способы ▼</query>
+          </location>
+          <enabled>false</enabled>
+        </locationMatch>
+        <locationMatch>
+          <location>
+            <host>*ivi.ru</host>
+            <path>/mobileapi/billing/v1/purchase</path>
+          </location>
+          <enabled>true</enabled>
+        </locationMatch>
+        <locationMatch>
+          <location>
+            <query>▼ Force Renew ▼</query>
+          </location>
+          <enabled>false</enabled>
+        </locationMatch>
+        <locationMatch>
+          <location>
+            <host>*ivi.ru</host>
+            <path>/pivi/hermes.HermesPublicService/ForceRenew</path>
+          </location>
+          <enabled>true</enabled>
+        </locationMatch>
+      </locationPatterns>
+    </hosts>
+    <rules>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue></matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>false</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>▼ моки для Payture ▼</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue></matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>false</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>false</matchResponse>
+        <newValue>1) ↓ AMOUNT_EXCEED (code: 1241)</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>true</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;ErrCode&quot;:\s?&quot;.*?&quot;</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;ErrCode&quot;: &quot;AMOUNT_EXCEED&quot;</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>1</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>true</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;code&quot;:\s?\d+</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;code&quot;: 1241</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue></matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>false</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>2) ↓ WALLET_LIMITS (code: 2150)</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;ErrCode&quot;:\s?&quot;.*?&quot;</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;ErrCode&quot;: &quot;ISSUER_LIMIT_AMOUNT_FAIL&quot;</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;code&quot;:\s?\d+</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;code&quot;: 2150</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue></matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>false</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>3) ↓ WALLET_BLOCKED (code: 2102)</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;ErrCode&quot;:\s?&quot;.*?&quot;</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;ErrCode&quot;: &quot;WRONG_USER_PARAMS&quot;</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;code&quot;:\s?\d+</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;code&quot;:2102</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;code&quot;:\s?\d+</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;code&quot;: 2115</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue></matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>false</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>4) ↓ FATAL_ERROR (code: 2140) ТОЛЬКО Payture</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;ErrCode&quot;:\s?&quot;.*?&quot;</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;ErrCode&quot;: &quot;CHEQUE_DATA_INVALID&quot;</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;code&quot;:\s?\d+</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;code&quot;: 2145</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue></matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>false</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>▼ моки для PciDuck ▼</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue></matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>false</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>1) ↓ TEMPORARY_ERROR (code: 2120) ТОЛЬКО PciDuck</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;error_code&quot;:\s?&quot;.*?&quot;</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;error_code&quot;: &quot;PROCESSING_TIME_OUT&quot;</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;code&quot;:\s?\d+</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;code&quot;: 2128</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue></matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>false</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>2) ↓ WALLET_LIMITS (code: 1250)</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;error_code&quot;:\s?&quot;.*?&quot;</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;error_code&quot;: &quot;ISSUER_LIMIT_FAIL&quot;</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue></matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>false</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>3) ↓ WALLET_BLOCKED (code: 2102)</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;error_code&quot;:\s?&quot;.*?&quot;</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;error_code&quot;: &quot;UNEXPECTED_RESPONSE_ERROR&quot;</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue></matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>false</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>{ 	&quot;error&quot;: { 		&quot;message&quot;: &quot;Неизвестная ошибка во время оплаты&quot;, 		&quot;сode&quot;: 1241, 		&quot;user_message&quot;: &quot;Неизвестная ошибка во время оплаты&quot;, 		&quot;ps_account_id&quot;: 1744288431000071, 		&quot;ps_account_title&quot;: &quot;Альфа-Банк&quot; 	} }</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;code&quot;:\s?\d+</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;code&quot;: 1220</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;code&quot;:\s?\d+</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;code&quot;:1405</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>false</active>
+        <ruleType>7</ruleType>
+        <matchValue>&quot;code&quot;:\s?\d+</matchValue>
+        <matchHeaderRegex>false</matchHeaderRegex>
+        <matchValueRegex>true</matchValueRegex>
+        <matchRequest>false</matchRequest>
+        <matchResponse>true</matchResponse>
+        <newValue>&quot;code&quot;: 1100</newValue>
+        <newHeaderRegex>false</newHeaderRegex>
+        <newValueRegex>false</newValueRegex>
+        <matchWholeValue>false</matchWholeValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+    </rules>
+  </rewriteSet>
+</rewriteSet-array>
