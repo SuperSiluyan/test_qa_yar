@@ -1,7 +1,8 @@
 ---
 cases:
   - C1278889
-team: stream video
+teams: 
+  - stream video
 tags:
   - video, app. feature
 name: Дескрипшн есть тег, но нет текста

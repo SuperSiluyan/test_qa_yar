@@ -1,7 +1,10 @@
 ---
 cases:
   - C1278889, 6703596
-team: stream video, stream ux, turk
+teams: 
+  - stream video, 
+  - stream ux,
+  - turk
 tags:
   - video, app. feature
 name: Мок для параметров appversion
