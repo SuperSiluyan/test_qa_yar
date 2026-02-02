@@ -1,0 +1,79 @@
+apiVersion: v1
+data:
+  REQUIRE_LOCAL_2FA: "True"
+  config_daemon.py: |
+    from .base import *
+
+    DEBUG = True
+    if DEBUG:
+        MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+
+    init_sentry("http://d535a448d97da497c2d315cec088e7fc@sentry-dev.svc.infra.ivi.ru/131")
+
+    STATSD_HOST = "statsd.dev.ivi.ru"
+
+    DATABASES[DEFAULT_DATABASE]["HOST"] = "nginx-weight-manager-pg"
+    DATABASES[DEFAULT_DATABASE]["OPTIONS"]["gssencmode"] = "disable"
+    DATABASES[REPLICA_DATABASE]["HOST"] = "nginx-weight-manager-pg"
+    DATABASES[REPLICA_DATABASE]["OPTIONS"]["gssencmode"] = "disable"
+
+    OTEL_ENABLED = False
+    OTEL_COLLECTOR_HOST = "backend-tracing-otlp-agent"
+
+    REST_FRAMEWORK["DEFAULT_AUTHENTICATION_CLASSES"] += [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ]
+
+    SIMPLE_JWT_ENABLED = True
+
+    # Настройки 2FA аутентификации
+    REQUIRE_LOCAL_2FA = True
+    MULTIFACTOR.update(
+        {
+            "FIDO_SERVER_ID": "k8s.dev.ivi.ru",
+        }
+    )
+  config_web.py: |
+    from .base import *
+
+    DEBUG = True
+    if DEBUG:
+        MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+
+    init_sentry("http://d535a448d97da497c2d315cec088e7fc@sentry-dev.svc.infra.ivi.ru/131")
+
+    STATSD_HOST = "statsd.dev.ivi.ru"
+
+    DATABASES[DEFAULT_DATABASE]["HOST"] = "nginx-weight-manager-pg"
+    DATABASES[DEFAULT_DATABASE]["OPTIONS"]["gssencmode"] = "disable"
+    DATABASES[REPLICA_DATABASE]["HOST"] = "nginx-weight-manager-pg"
+    DATABASES[REPLICA_DATABASE]["OPTIONS"]["gssencmode"] = "disable"
+
+    OTEL_ENABLED = False
+    OTEL_COLLECTOR_HOST = "backend-tracing-otlp-agent"
+
+    REST_FRAMEWORK["DEFAULT_AUTHENTICATION_CLASSES"] += [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ]
+
+    SIMPLE_JWT_ENABLED = True
+
+    # Настройки 2FA аутентификации
+    REQUIRE_LOCAL_2FA = False
+    MULTIFACTOR.update(
+        {
+            "FIDO_SERVER_ID": "k8s.dev.ivi.ru",
+        }
+    )
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"config_daemon.py":"from .base import *\n\nDEBUG = True\nif DEBUG:\n    MIDDLEWARE += [\"debug_toolbar.middleware.DebugToolbarMiddleware\"]\n\ninit_sentry(\"http://d535a448d97da497c2d315cec088e7fc@sentry-dev.svc.infra.ivi.ru/131\")\n\nSTATSD_HOST = \"statsd.dev.ivi.ru\"\n\nDATABASES[DEFAULT_DATABASE][\"HOST\"] = \"nginx-weight-manager-pg\"\nDATABASES[DEFAULT_DATABASE][\"OPTIONS\"][\"gssencmode\"] = \"disable\"\nDATABASES[REPLICA_DATABASE][\"HOST\"] = \"nginx-weight-manager-pg\"\nDATABASES[REPLICA_DATABASE][\"OPTIONS\"][\"gssencmode\"] = \"disable\"\n\nOTEL_ENABLED = False\nOTEL_COLLECTOR_HOST = \"backend-tracing-otlp-agent\"\n\nREST_FRAMEWORK[\"DEFAULT_AUTHENTICATION_CLASSES\"] += [\n    \"rest_framework_simplejwt.authentication.JWTAuthentication\",\n]\n\nSIMPLE_JWT_ENABLED = True\n\n# Настройки 2FA аутентификации\nREQUIRE_LOCAL_2FA = False\nMULTIFACTOR.update(\n    {\n        \"FIDO_SERVER_ID\": \"k8s.dev.ivi.ru\",\n    }\n)\n","config_web.py":"from .base import *\n\nDEBUG = True\nif DEBUG:\n    MIDDLEWARE += [\"debug_toolbar.middleware.DebugToolbarMiddleware\"]\n\ninit_sentry(\"http://d535a448d97da497c2d315cec088e7fc@sentry-dev.svc.infra.ivi.ru/131\")\n\nSTATSD_HOST = \"statsd.dev.ivi.ru\"\n\nDATABASES[DEFAULT_DATABASE][\"HOST\"] = \"nginx-weight-manager-pg\"\nDATABASES[DEFAULT_DATABASE][\"OPTIONS\"][\"gssencmode\"] = \"disable\"\nDATABASES[REPLICA_DATABASE][\"HOST\"] = \"nginx-weight-manager-pg\"\nDATABASES[REPLICA_DATABASE][\"OPTIONS\"][\"gssencmode\"] = \"disable\"\n\nOTEL_ENABLED = False\nOTEL_COLLECTOR_HOST = \"backend-tracing-otlp-agent\"\n\nREST_FRAMEWORK[\"DEFAULT_AUTHENTICATION_CLASSES\"] += [\n    \"rest_framework_simplejwt.authentication.JWTAuthentication\",\n]\n\nSIMPLE_JWT_ENABLED = True\n\n# Настройки 2FA аутентификации\nREQUIRE_LOCAL_2FA = False\nMULTIFACTOR.update(\n    {\n        \"FIDO_SERVER_ID\": \"k8s.dev.ivi.ru\",\n    }\n)\n"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app":"nginx-weight-manager"},"name":"nginx-weight-manager-config","namespace":"iilin"}}
+  creationTimestamp: "2026-02-02T06:14:06Z"
+  labels:
+    app: nginx-weight-manager
+  name: nginx-weight-manager-config
+  namespace: iilin
+  resourceVersion: "4289266260"
+  uid: a6c030d5-76b9-4cb7-bd5b-36b7de49457a
